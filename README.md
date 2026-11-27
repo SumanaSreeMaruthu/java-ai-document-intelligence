@@ -1,23 +1,19 @@
 # Java AI Document Intelligence
 
-Java 21 Spring Boot **starter** by Sumana Sree Maruthu.
+Java 21 / Spring Boot document-text Q&A demonstration.
 
-**Status:** REST API demo only. Gemini integration, AI agents, RAG, vector search, databases, authentication, and frontend are planned, **not implemented**.
+## Implemented
+- Save, list, retrieve and delete pasted text documents in H2/JPA
+- Ask Gemini 2.5 Flash questions about a stored document
+- Browser interface at `http://localhost:8080/`
+- REST `POST /api/v1/documents` and `POST /api/v1/documents/{id}/ask`
+- Basic context test, Dockerfile and CI
 
 ## Run
-Requires Java 21 and Maven 3.9+.
 ```bash
+export GEMINI_API_KEY=your_key_here
 mvn spring-boot:run
-mvn test
-curl -X POST http://localhost:8080/api/v1/documents -H 'Content-Type: application/json' -d '{"documentName":"example"}'
 ```
 
-## Roadmap
-- [ ] Gemini API integration with secure environment variables
-- [ ] Service and repository layers
-- [ ] Persistent database and migrations
-- [ ] Integration and security tests
-- [ ] React or Angular frontend
-- [ ] Docker Compose and deployment
-
-Use only synthetic data.
+## Limitations
+This is **not a full RAG/document-ingestion platform**. It does not yet parse PDFs, accept uploaded files, use embeddings/pgvector, provide citations, enforce authentication, or offer a React frontend. Full document text is sent to Gemini, so use synthetic, non-sensitive data only. Build has not been independently verified.
