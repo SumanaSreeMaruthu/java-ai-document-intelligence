@@ -46,4 +46,8 @@ public class ApiController {
     public void delete(@PathVariable Long id) {
         service.delete(id);
     }
+    @GetMapping("/search")
+    public List<DocumentRecord> search(@RequestParam(required = false) String query) {
+        return service.search(query);
+    }
 }
