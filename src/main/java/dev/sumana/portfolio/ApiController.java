@@ -11,7 +11,8 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/v1/documents")
 public class ApiController {
 
-    public record CreateRequest(@NotBlank String name, @NotBlank String text) {}\n    public record QuestionRequest(@NotBlank String question) {}
+    public record CreateRequest(@NotBlank String name, @NotBlank String text) {}
+    public record QuestionRequest(@NotBlank String question) {}
 
     private final DocumentService service;
 
