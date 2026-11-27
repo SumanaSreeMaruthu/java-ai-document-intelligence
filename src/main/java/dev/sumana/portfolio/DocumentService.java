@@ -43,4 +43,10 @@ public class DocumentService {
     public String ask(Long id, String question) {
         return gemini.answer(get(id).getText(), question);
     }
+    public List<DocumentRecord> search(String value) {
+        if (value == null || value.isBlank()) {
+            return repository.findAll();
+        }
+        return repository.findByNameContainingIgnoreCase(value.trim());
+    }
 }
